@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Blog placeholder graphic</title>
+  <desc id="desc">A simple gradient background with the word Blog in the center.</desc>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad)" rx="40" />
+  <g fill="#ffffff" font-family="'Inter', 'Segoe UI', sans-serif" text-anchor="middle">
+    <text x="600" y="320" font-size="120" font-weight="700">BLOG</text>
+    <text x="600" y="390" font-size="40" opacity="0.85">Share your knowledge</text>
+  </g>
+</svg>
