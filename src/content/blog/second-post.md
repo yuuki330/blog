@@ -1,16 +1,14 @@
 ---
-title: 'Second post'
-description: 'Lorem ipsum dolor sit amet'
+title: '執筆フローを自動化する試み'
+description: 'Markdown原稿からnote・Qiita・Zennへ展開するためのツール整備について振り返ります。'
 pubDate: 'Jul 15 2022'
 heroImage: '../../assets/og-placeholder.svg'
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+ブログの立ち上げが一段落したので、次は公開フローの自動化に着手しました。Astroで管理しているMarkdownを共通原稿とし、外部サービス向けには変換スクリプトで差分調整を行います。QiitaはAPI経由で下書き作成まで自動化できる一方、noteは手動投稿が前提なので、装飾を崩さずに貼り付けられるテンプレートを整えることにしました。
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+各サービスでサポートしているMarkdownの方言が違うため、変換処理は想像以上に奥が深いです。たとえばQiitaの注釈やZennの図表埋め込みなど、エディタ固有の記法を尊重しながら、ローカルでは極力素のMarkdownで編集を完結させたいというバランスに悩まされています。現状はremarkプラグインを組み合わせ、Frontmatterに設定したオプションを読み取って出力を切り替える方式に落ち着きました。
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+自動化の恩恵として、公開直前のチェックリストが明確になったのは大きなメリットです。記事の文字数、見出しの階層、OGP用のサムネイル有無などを事前に検証し、CLIが通れば安心して投稿作業に進めます。ゆくゆくはGitHub Actionsでの定期配信や、予約投稿に向けたワークフローも整備したいところです。
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
-
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+このフローが完成すれば、執筆はローカルで集中して行い、公開時はコマンド一つで複数プラットフォームへ展開できる理想に近づきます。作業の自動化は一度構築すると維持が大変ですが、継続的にアウトプットするための投資として、コツコツ改善を続けていくつもりです。

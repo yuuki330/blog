@@ -1,16 +1,18 @@
 ---
-title: 'Third post'
-description: 'Lorem ipsum dolor sit amet'
+title: 'マルチプラットフォーム配信の課題整理'
+description: 'note・Qiita・Zennへ同時投稿するときに意識したポイントと運用ルールをまとめました。'
 pubDate: 'Jul 22 2022'
 heroImage: '../../assets/og-placeholder.svg'
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+自作ブログから複数サービスへ記事を展開するとき、単純なコピペでは済まない落とし穴がいくつもありました。たとえばZennの目次生成は見出しレベルに敏感で、H2より浅い見出しが連続すると意図しない構造になることがあります。一方、noteでは埋め込みのiframeタグが制限されているため、動画やスライドのリンクは公式ウィジェットに合わせた書き方が必要です。
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+そのため、公開前には以下の3点をチェックリスト化しました。
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+1. OGP画像とサムネイルの比率が各サービスの推奨値を満たしているか。
+2. 記事内リンクや脚注などの相互参照が、リンク切れなく動作しているか。
+3. 画像の代替テキストを日本語で用意し、スクリーンリーダーでも意味が伝わるか。
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+また、日本語記事特有の悩みとして、全角記号と半角記号が混ざると可読性が下がる点があります。VS Codeの拡張機能やtextlintを活用し、文体や用語を自動で揃える仕組みを導入したことで、校正にかける時間が短縮できました。特にtextlintは独自ルールを追加しやすく、「ですます調で統一」「カタカナ語の揺れを検出」といった要件にも柔軟に対応できます。
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+最終的には、ローカルで`yarn export --target=qiita slug`のようなコマンドを実行すると、Qiita向けのMarkdownとZenn向けの原稿が自動生成される状態を目指しています。noteについては自動投稿が難しいものの、変換済みのMarkdownをワンクリックでコピーできれば十分実用的です。細かな整備はこれからですが、マルチプラットフォーム配信の下地は固まりつつあります。

@@ -1,109 +1,113 @@
 ---
-title: 'Markdown Style Guide'
-description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
+title: 'Markdownスタイルガイド'
+description: 'Astroで記事を書く際に役立つMarkdownの記法と注意点を日本語で整理しました。'
 pubDate: 'Jun 19 2024'
 heroImage: '../../assets/og-placeholder.svg'
 ---
 
-Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
+Astroで技術記事を書くときに意識しているMarkdownの記法や、プレビューで差が出やすいポイントをまとめました。ローカルのプレビューとnote・Qiita・Zennで表示が大きく崩れないよう、ここに書いたルールを下敷きに原稿を整えています。
 
-## Headings
+## 見出し
 
-The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
+HTMLの`<h1>`〜`<h6>`に対応する6段階の見出しを使い分けます。`<h1>`はページ内で一度だけ使用し、記事本文では`<h2>`から始めるのが基本です。
 
-# H1
+# H1（ページタイトルでのみ使用）
 
-## H2
+## H2（大きなセクション）
 
-### H3
+### H3（サブセクション）
 
-#### H4
+#### H4（詳細）
 
-##### H5
+##### H5（補足）
 
-###### H6
+###### H6（補足のさらに補足）
 
-## Paragraph
+## 段落
 
-Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
+文章は空行で区切ると自動的に段落になります。日本語では文末の「。」が連続すると読みにくくなるため、1文を短く区切りつつ適度に改行を入れています。以下はダミーテキストですが、段落のまとまりを意識した構造になっています。
 
-Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
+最初の段落では、記事の概要や背景を簡潔にまとめます。読者が何を得られるのかを最初に提示すると離脱率が下がる傾向があります。
 
-## Images
+2つ目の段落では詳細な情報を補足し、必要であればリストや図を挿入します。最後の段落で結論と次のアクションを提示すると、全体が締まりのある文章になります。
 
-### Syntax
+## 画像
+
+画像はAltテキストを必ず付与し、相対パスで管理します。Astroの`public/`配下に画像を置く場合はルートからのパスを書くとビルド後も崩れません。
+
+### 記法
 
 ```markdown
-![Alt text](./full/or/relative/path/of/image)
+![代替テキスト](./full/or/relative/path/of/image)
 ```
 
-### Output
+### 表示例
 
 ![blog placeholder](../../assets/about-hero.svg)
 
-## Blockquotes
+## 引用
 
-The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
+引用は原文が明確になるように引用元を併記します。脚注で詳細な出典を示すと、各サービスでもそのまま表示できて便利です。
 
-### Blockquote without attribution
+### 出典なしの引用
 
-#### Syntax
+#### 記法
 
 ```markdown
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
-> **Note** that you can use _Markdown syntax_ within a blockquote.
+> 学びを言語化しないかぎり、知識は自分のものにならない。
+> **補足**: 引用内でも *Markdown 記法* を利用できます。
 ```
 
-#### Output
+#### 表示例
 
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
-> **Note** that you can use _Markdown syntax_ within a blockquote.
+> 学びを言語化しないかぎり、知識は自分のものにならない。
+> **補足**: 引用内でも *Markdown 記法* を利用できます。
 
-### Blockquote with attribution
+### 出典ありの引用
 
-#### Syntax
+#### 記法
 
 ```markdown
 > Don't communicate by sharing memory, share memory by communicating.<br>
 > — <cite>Rob Pike[^1]</cite>
 ```
 
-#### Output
+#### 表示例
 
 > Don't communicate by sharing memory, share memory by communicating.<br>
 > — <cite>Rob Pike[^1]</cite>
 
-[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
+[^1]: 引用はRob Pike氏が2015年11月18日のGopherfestで行った[講演](https://www.youtube.com/watch?v=PAAkCSZUG1c)からの抜粋です。
 
-## Tables
+## テーブル
 
-### Syntax
+Markdownの表は`|`と`-`で列を揃えます。GitHub Flavored Markdownに準拠しているため、中央揃えや右寄せもコロンで指定可能です。
+
+### 記法
 
 ```markdown
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
+| イタリック | ボールド   | コード   |
+| ---------- | ---------- | ------- |
+| _italics_  | **bold**   | `code` |
 ```
 
-### Output
+### 表示例
 
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
+| イタリック | ボールド   | コード   |
+| ---------- | ---------- | ------- |
+| _italics_  | **bold**   | `code` |
 
-## Code Blocks
+## コードブロック
 
-### Syntax
-
-we can use 3 backticks ``` in new line and write snippet and close with 3 backticks on new line and to highlight language specific syntax, write one word of language name after first 3 backticks, for eg. html, javascript, css, markdown, typescript, txt, bash
+バッククォート3つで囲むとコードブロックになります。先頭のバッククォートに言語名を指定すると、Astroのハイライト機能が適用されます。
 
 ````markdown
 ```html
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
+    <title>サンプルHTML5ドキュメント</title>
   </head>
   <body>
     <p>Test</p>
@@ -112,14 +116,14 @@ we can use 3 backticks ``` in new line and write snippet and close with 3 backti
 ```
 ````
 
-### Output
+### 表示例
 
 ```html
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
+    <title>サンプルHTML5ドキュメント</title>
   </head>
   <body>
     <p>Test</p>
@@ -127,88 +131,50 @@ we can use 3 backticks ``` in new line and write snippet and close with 3 backti
 </html>
 ```
 
-## List Types
+## リスト
 
-### Ordered List
+番号付きリストと箇条書きを使い分けると、手順とメモを整理しやすくなります。入れ子にする際は2スペースまたはタブ1つでインデントします。
 
-#### Syntax
+### 番号付きリスト
 
-```markdown
-1. First item
-2. Second item
-3. Third item
-```
-
-#### Output
-
-1. First item
-2. Second item
-3. Third item
-
-### Unordered List
-
-#### Syntax
+#### 記法
 
 ```markdown
-- List item
-- Another item
-- And another item
+1. 最初の項目
+2. 次の項目
+3. 最後の項目
 ```
 
-#### Output
+#### 表示例
 
-- List item
-- Another item
-- And another item
+1. 最初の項目
+2. 次の項目
+3. 最後の項目
 
-### Nested list
+### 箇条書きリスト
 
-#### Syntax
+#### 記法
 
 ```markdown
-- Fruit
-  - Apple
-  - Orange
-  - Banana
-- Dairy
-  - Milk
-  - Cheese
+- リスト項目
+- 別の項目
+- さらに別の項目
 ```
 
-#### Output
+#### 表示例
 
-- Fruit
-  - Apple
-  - Orange
-  - Banana
-- Dairy
-  - Milk
-  - Cheese
+- リスト項目
+- 別の項目
+- さらに別の項目
 
-## Other Elements — abbr, sub, sup, kbd, mark
+## インライン装飾
 
-### Syntax
+太字・斜体・コードなどの装飾は読み手の理解を助ける目的で最小限にします。特に日本語では斜体が読みづらいため、強調には太字を使うほうが伝わりやすいです。
 
-```markdown
-<abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
+- `**太字**` は重要なキーワードに使用
+- `_イタリック_` は専門用語の初出に使用
+- `` `コード` `` はコマンドや識別子を示すときに使用
 
-H<sub>2</sub>O
+## 締めくくり
 
-X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
-
-Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Delete</kbd> to end the session.
-
-Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
-```
-
-### Output
-
-<abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
-
-H<sub>2</sub>O
-
-X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
-
-Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Delete</kbd> to end the session.
-
-Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
+Markdownの基本を押さえておけば、Astro上でも外部サービス上でも大きく表示が崩れることはありません。ここで紹介したルールをベースに、記事ごとに必要な調整を加えることで安定した公開フローを維持できます。
