@@ -1,0 +1,30 @@
+---
+title: 'MDX活用のポイント'
+description: 'AstroでMDXを利用してインタラクティブな記事を作る際の基本と注意点を解説します。'
+pubDate: 'Jun 01 2024'
+heroImage: '../../assets/og-placeholder.svg'
+---
+
+このテーマには[@astrojs/mdx](https://docs.astro.build/ja/guides/integrations-guide/mdx/)があらかじめ組み込まれており、`astro.config.mjs`にも設定が済んでいます。MDXを使わない場合は設定から該当のインテグレーションを外すだけで無効化できます。
+
+## なぜMDXなのか
+
+MDXはMarkdownにJavaScriptやJSXの構文を追加した拡張フォーマットです。[Markdown内でUIコンポーネントを呼び出せる](https://docs.astro.build/ja/guides/markdown-content/#mdx%E3%81%A7%E5%87%BA%E6%9D%A5%E3%82%8B%E3%81%93%E3%81%A8)ため、インタラクティブなチャートやアラート、CTAボタンなどを簡単に埋め込めます。既存のMDX資産がある場合も、Astroへの移行がスムーズになります。
+
+## 使い方の例
+
+MDX内でAstroコンポーネントをインポートし、そのままJSXライクな構文で描画できます。以下の例では、`HeaderLink`コンポーネントを読み込み、クリックするとアラートが表示されるリンクを挿入しています。
+
+import HeaderLink from '../../components/HeaderLink.astro';
+
+<HeaderLink href="#" onclick="alert('clicked!')">
+        MDXで埋め込んだコンポーネント
+</HeaderLink>
+
+ブラウザでこのページを開くと、上記のリンクをクリックした瞬間にブラウザのアラートが表示されます。AstroはMDX内のコンポーネントも事前レンダリングしますが、動的な振る舞いをさせたい場合は次の項目を確認してください。
+
+## さらに学ぶためのリンク
+
+- [MDXの構文リファレンス](https://mdxjs.com/docs/what-is-mdx)
+- [AstroでのMarkdown/MDX活用ガイド](https://docs.astro.build/ja/guides/markdown-content/#markdown%E3%81%A8mdx%E3%81%AE%E3%83%9A%E3%83%BC%E3%82%B8)
+- **補足:** インタラクティブなUIにする場合は[Client Directive](https://docs.astro.build/ja/reference/directives-reference/#client-%E9%96%A2%E9%80%A3)を指定しないと、デフォルトでは静的HTMLとして描画されます。
